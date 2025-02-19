@@ -14,11 +14,17 @@ fi
 
 
 # Write command
-flashrom -p serprog:dev=/dev/ttyACM0:115200,spispeed=12M -c W25Q128.W -w $1 -V --progress
+# flashrom -p serprog:dev=/dev/ttyACM0:115200,spispeed=12M -c W25Q128.W -w $1 -V --progress
 
-# Read command
-# flashrom -p serprog:dev=/dev/ttyACM0:115200,spispeed=12M -c W25Q128.W -r test_flash_readout.rom -V --progress
+# Read command for UPSquared chip
+# flashrom -p serprog:dev=/dev/ttyACM0:115200,spispeed=12M -c W25Q128.W -r up_squared_readout.rom -V --progress
 
+# Read command for SuperMicro chip
+# flashrom -p serprog:dev=/dev/ttyACM0:115200,spispeed=12M -c W25Q128.V -r supermicro_readout.rom -V --progress
+
+
+# Scan
+# flashrom -p serprog:dev=/dev/ttyACM0:115200,spispeed=12M -V
 
 
 
