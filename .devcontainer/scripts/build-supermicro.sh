@@ -40,18 +40,21 @@ popd
 echo ">>> Configuring Supermicro"
 make distclean
 touch .config
+
 ./util/scripts/config --enable CONFIG_VENDOR_SUPERMICRO
+./util/scripts/config --enable CONFIG_USE_LEGACY_8254_TIMER
+./util/scripts/config --enable CONFIG_HAVE_IFD_BIN
 ./util/scripts/config --enable CONFIG_BOARD_SUPERMICRO_X11SSH_F
+./util/scripts/config --enable CONFIG_HAVE_ME_BIN
 ./util/scripts/config --enable CONFIG_PAYLOAD_ELF
+./util/scripts/config --set-str CONFIG_IFD_BIN_PATH "extracted/supermicro/flashregion_0_flashdescriptor.bin"
+./util/scripts/config --set-str CONFIG_ME_BIN_PATH "extracted/supermicro/flashregion_2_intel_me.bin"
 ./util/scripts/config --set-str CONFIG_PAYLOAD_FILE "payloads/coreinfo/build/coreinfo.elf"
 
-# WRONG:
-# ./util/scripts/config --set-str IFWI_FILE_NAME "extracted/supermicro/flashregion_1_bios.bin"
-# ./util/scripts/config --set-str IFD_BIN_PATH "extracted/supermicro/flashregion_0_flashdescriptor.bin"
-# make olddefconfig
+make olddefconfig
 
-# echo ">>> Building coreboot for Supermicro"
-# make
+echo ">>> Building coreboot for Supermicro"
+make
 
 
 # Run test
