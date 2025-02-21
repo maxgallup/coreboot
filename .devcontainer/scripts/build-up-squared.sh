@@ -13,8 +13,8 @@ echo ">>> Building extractor tool"
 make -C ./util/ifdtool
 
 echo ">>> Extracting vendor files"
-mkdir -p ./extracted
-pushd ./extracted
+mkdir -p ./extracted/up-squared
+pushd ./extracted/up-squared
 ../util/ifdtool/ifdtool -x ../blobs_libmicro/coreboot.rom
 popd
 
@@ -25,8 +25,8 @@ touch .config
 ./util/scripts/config --enable BOARD_UP_SQUARED
 ./util/scripts/config --enable NEED_IFWI
 ./util/scripts/config --enable HAVE_IFD_BIN
-./util/scripts/config --set-str IFWI_FILE_NAME "extracted/flashregion_1_bios.bin"
-./util/scripts/config --set-str IFD_BIN_PATH "extracted/flashregion_0_flashdescriptor.bin"
+./util/scripts/config --set-str IFWI_FILE_NAME "extracted/up-squared/flashregion_1_bios.bin"
+./util/scripts/config --set-str IFD_BIN_PATH "extracted/up-squared/flashregion_0_flashdescriptor.bin"
 ./util/scripts/config --enable RED_UNLOCK
 ./util/scripts/config --disable "DEFAULT_CONSOLE_LOGLEVEL_$(./util/scripts/config --state DEFAULT_CONSOLE_LOGLEVEL)"
 ./util/scripts/config --enable DEFAULT_CONSOLE_LOGLEVEL_0
