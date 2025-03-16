@@ -67,7 +67,6 @@ function configure_qemu() {
 
 
 function configure_upsquared() {
-
     echo ">>> Configuring UP Squared with Red Unlock"
     make distclean
     touch .config
@@ -114,7 +113,7 @@ function configure_supermicro() {
 
 
 function build() {
-    echo ">>> Building coreboot for Supermicro"
+    echo ">>> Building coreboot"
     make
 }
 
